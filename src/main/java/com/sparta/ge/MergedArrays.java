@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class MergedArrays {
     public static void main(String[] args) {
-        int[] array1 = {1, 2, 3, 4};
-        int[] array2 = {5, 6, 7, 8};
+        int[] array1 = {1, 3, 6, 9};
+        int[] array2 = {2, 4, 5, 7, 8};
 
         System.out.println(Arrays.toString(returnMergedArrays(array1, array2)));
     }
@@ -16,12 +16,27 @@ public class MergedArrays {
         int array2Length = array2.length;
         int mergeArrayLength = array1Length + array2Length;
         int[] mergedArray = new int[mergeArrayLength];
-        for(int i=0; i<array1Length; i++){
-            mergedArray[i] = mergedArray[i] + array1[i];
+        int counter1 = 0;
+        int counter2 = 0;
+        int counter3 = 0;
+
+        while(counter1 < array1Length && counter2 < array2Length){
+            if(array1[counter1] < array2[counter2]){
+                mergedArray[counter3++] =array1[counter1++];
+            }
+            else{
+                mergedArray[counter3++] = array2[counter2++];
+            }
         }
-        for(int i=0; i<array2Length; i++){
-            mergedArray[i+array1Length] = array2[i];
+
+        while(counter1 < array1Length){
+            mergedArray[counter3++] = array1[counter1++];
         }
+
+        while(counter2 < array2Length){
+            mergedArray[counter3++] = array2[counter2++];
+        }
+
         return mergedArray;
     }
 }
