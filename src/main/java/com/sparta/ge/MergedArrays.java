@@ -22,19 +22,27 @@ public class MergedArrays {
 
         while(counter1 < array1Length && counter2 < array2Length){
             if(array1[counter1] < array2[counter2]){
-                mergedArray[counter3++] =array1[counter1++];
+                mergedArray[counter3] =array1[counter1];
+                counter3++;
+                counter1++;
             }
             else{
-                mergedArray[counter3++] = array2[counter2++];
+                mergedArray[counter3] = array2[counter2];
+                counter3++;
+                counter2++;
             }
         }
 
         while(counter1 < array1Length){
-            mergedArray[counter3++] = array1[counter1++];
+            mergedArray[counter3] = array1[counter1];
+            counter3++;
+            counter1++;
         }
 
         while(counter2 < array2Length){
-            mergedArray[counter3++] = array2[counter2++];
+            mergedArray[counter3] = array2[counter2];
+            counter3++;
+            counter2++;
         }
 
         return mergedArray;
